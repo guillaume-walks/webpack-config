@@ -22,6 +22,10 @@ module.exports = {
         use: 'vue-loader'
       },
       {
+        test: /\.js$/,
+        use: 'babel-loader'
+      },
+      {
         test: /\.s?css$/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -33,6 +37,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
     /**
      * {HtmlWebpackPlugin}
