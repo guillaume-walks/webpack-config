@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config build/webpack.config.dev.js",
     "dev": "webpack-dev-server --config build/webpack.config.dev.js",
-    "serve": "http-server ./dist -i"
+    "serve": "http-server ./dist -i",
+    "lint": "eslint --ext .js,.vue src"
   },
   "keywords": [],
   "author": "",
