@@ -1,5 +1,8 @@
 <template>
-  <h3> components Hello.vue {{ name }}!</h3>
+  <div>
+    <h3>components Hello.vue {{ name }}!</h3>
+    <img src="/static/img.jpg">
+  </div>
 </template>
 <script>
 export default {
@@ -9,11 +12,11 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-h3{
-  color: red;
+h3 {
+  color: orange;
 }
 </style>

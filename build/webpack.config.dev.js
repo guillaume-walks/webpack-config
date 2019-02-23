@@ -3,7 +3,11 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
 module.exports = {
   mode: 'development',
   entry: [
@@ -56,12 +60,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true 
+      inject: true
     }),
     new MiniCssExtractPlugin({
       // extract css into its own .css file
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    // copy a folder into dist/
+    new CopyWebpackPlugin([{
+      from: resolve('src/static/'),
+      to: resolve('dist/static/'),
+      toType: 'dir'
+    }])
   ]
 }
