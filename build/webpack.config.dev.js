@@ -75,6 +75,7 @@ module.exports = {
       filename: "[name].css"
     }),
     // remove unused css, make sure to specify .src/ as paths
+    // see: https://github.com/FullHuman/purgecss/tree/master/examples/with-vue
     new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
     }),
