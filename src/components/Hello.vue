@@ -19,4 +19,8 @@ export default {
 h3 {
   color: orange;
 }
+
+h5 {
+  color: green;
+}
 </style>

@@ -4,10 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const glob = require('glob')
 const path = require('path')
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
+const PATHS = {
+  src: path.join(__dirname, '..', 'src')
+}
+
+console.log('START >>>>>', PATHS)
+
 module.exports = {
   mode: 'development',
   entry: [
@@ -64,8 +72,11 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       // extract css into its own .css file
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: "[name].css"
+    }),
+    // remove unused css, make sure to specify .src/ as paths
+    new PurgecssPlugin({
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
     }),
     // copy a folder into dist/
     new CopyWebpackPlugin([{
